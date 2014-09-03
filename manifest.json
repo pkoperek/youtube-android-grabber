@@ -1,18 +1,20 @@
 {
-  "name": "youtube grabber",
-  "version": "0.0.1",
-  "manifest_version": 2,
-  "permissions": [
-    "https://*.youtube.com/*"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
+    "name": "youtube grabber",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "permissions": [
         "https://*.youtube.com/*"
-      ],
-      "js": [
-        "src/inject/inject.js"
-      ]
-    }
-  ]
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.youtube.com/*"
+            ],
+            "js": [
+                "js/jquery/jquery.min.js",
+                "src/inject/inject.js"
+            ],
+            "run_at": "document_end"
+        }
+    ]
 }

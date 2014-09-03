@@ -3,10 +3,15 @@ chrome.extension.sendMessage({}, function(response) {
 	if (document.readyState === "complete") {
 		clearInterval(readyStateCheckInterval);
 
-		// ----------------------------------------------------------
-		// This part of the script triggers when page is done loading
-		console.log("Hello. This message was sent from scripts/inject.js");
-		// ----------------------------------------------------------
+        console.log("alive");
+
+        var linkElement = $('link[itemprop="url"]')
+
+        if(linkElement != null) {
+            console.log("No link to video!")
+        } else {
+            console.log("Found: " + linkElement.href);
+        }
 
 	}
 	}, 10);

@@ -1,18 +1,24 @@
 chrome.extension.sendMessage({}, function(response) {
-	var readyStateCheckInterval = setInterval(function() {
-	if (document.readyState === "complete") {
-		clearInterval(readyStateCheckInterval);
+        var readyStateCheckInterval = setInterval(function() {
+                if (document.readyState === "complete") {
+                    clearInterval(readyStateCheckInterval);
 
-        console.log("alive");
+                    console.log("alive");
 
-        var linkElement = $('link[itemprop="url"]')
+                    $('video').each(function() {
+                            var video = this;
 
-        if(linkElement != null) {
-            console.log("No link to video!")
-        } else {
-            console.log("Found: " + linkElement.href);
-        }
+                            for (var key in video) {
+                                if (video.hasOwnProperty(key)) {
+                                    console.log(key + " -> " + video[key]);
+                                }
+                            }
 
-	}
-	}, 10);
+                            var id = video.attributes.getNamedItem('data-youtube-id').value;
+
+                            console.log("Found: " + id);
+                    });
+
+                }
+        }, 10);
 });
